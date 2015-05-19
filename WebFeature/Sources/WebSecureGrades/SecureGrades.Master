@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SecureGrades.master.cs" Inherits="WebSecureGrades.SecureGrades" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=960, initial-scale=0.75, maximum-scale=1.0" />
+
+    <title>Secure Grades :: <%= this.Page.Title %></title>
+    <link href="Images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <link href="Images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- site icon: http://www.iconarchive.com/show/mac-icons-by-artua/Lock-icon.html -->
+
+    <link rel="stylesheet" href="App_Themes/Morpheus/bootstrap-3.0.2-dist/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="App_Themes/Morpheus/bootstrap-3.0.2-dist/dist/css/bootstrap-theme.min.css">
+
+    <script src="Scripts/jquery-2.0.3.min.js"></script>
+    <script src="Scripts/bootstrap-3.0.2-dist/dist/js/bootstrap.min.js"></script>
+    <script src="Scripts/securegrades.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="frmSecGrades" runat="server">
+        <asp:ScriptManager runat="server" ID="smSecureGrades" EnablePageMethods="true">
+        </asp:ScriptManager>
+
+        <header>
+            <div class="header adjustcenter">
+                <img class="logo" src="Images/securegrades.png" width="40px" />
+                
+                <h1 class="sitename">Secure Grades</h1><br />
+                <h2 class="title"><%= this.Page.Title %></h2>
+
+                <div class="login">
+                <% if (this.Context.Request.IsAuthenticated) { %>
+                    <span>User </span>[ <asp:LoginName ID="lnLogin" runat="server" /> ] | <asp:LoginStatus ID="lsStatus" runat="server" />
+                <% } %>
+                </div>
+            </div>
+        </header>
+
+        <div id="workspace" class="adjustcenter">
+            <div class="body">
+                <asp:ContentPlaceHolder ID="ContentBody" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer adjustcenter">
+                <span class="copy">Copyrights <span style="font-weight:bold;">G7</span> &copy 2013</span>
+                <span class="info">[Secure Grades Submission System] | SIRS PROJECT</span>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>

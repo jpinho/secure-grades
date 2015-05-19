@@ -1,0 +1,143 @@
+﻿/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,
+dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,
+legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,
+hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,
+video{ border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0 }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body{line-height:1}
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+table{border-collapse:collapse;border-spacing:0}
+
+
+/* Trinity CSS */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../../Fonts/OpenSans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../../Fonts/OpenSans-Semibold.ttf') format('truetype');
+}
+
+body {  
+    font-family: 'Open Sans', Calibri, Tahoma, Verdana;
+    font-size:12px;
+    width:100%;
+    background: url('../../Images/pattern-006.gif') repeat left top;
+    overflow:hidden;
+}
+
+h1 { font-size:16px; }
+h2 { font-size: 14px; }
+
+input[type="button"] {
+    border-radius:5px;
+    border: 1px solid silver;
+    background-color:#c7e6fb;
+}
+
+.adjustcenter {
+    width:960px;
+    margin:0 auto;
+}
+
+header, footer {
+    color: #EDEDED;
+    background-color: #333;
+}
+
+header {
+    height: 55px;
+    padding-top: 12px;
+    line-height: 20px;
+}
+
+    header .logo {
+        float:left;
+        margin-right:10px;
+        margin-top:-5px;
+    }
+
+    header h1 {
+        color:#49af3d;
+        font-weight:bold;
+    }
+    header h1, header h2 {
+        float:left;
+    }
+
+    header .login {
+        float:right;
+        margin-top: -10px;
+        text-transform: uppercase;
+        font-size: 11px;
+    }
+        header .login a, header .login a:visited {
+            color:#EDEDF1;
+        }
+
+/* body */
+#workspace {
+    position: absolute;
+    height: 90%;
+    left: 50%;
+    margin-left: -480px;
+    overflow: auto;
+    overflow-x: auto;
+    padding: 0;
+    width: 80%;
+}
+
+    #workspace input[type="text"],
+    #workspace input[type="password"] {
+        padding:4px;
+    }
+
+    #workspace input[type="submit"], #workspace input[type="button"] {
+        text-transform: uppercase;
+        font-size: 12px;
+        border: 1px solid #333;
+        padding: 2px 8px;
+    }
+
+    #workspace .body {
+        width:960px;
+        padding:20px;
+        background-color:#fff;
+    }
+        #gradesBoard .filter tr td:first-child{
+            padding-right:10px;
+            padding-bottom:10px;
+            padding-top:10px;
+        }
+
+        #gradesBoard .table.grades input {
+            width:40px;
+            padding:2px;
+            text-align:center;
+        }
+
+        #messageBox .signature{
+            margin: 10px inherit;
+            font-weight:bold;
+        }
+
+/* footer */
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height:50px;
+    padding-top:20px;
+}
+
+    footer .info {
+        float:right;
+    }

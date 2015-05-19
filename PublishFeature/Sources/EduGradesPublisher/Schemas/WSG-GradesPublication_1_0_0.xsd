@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsd="http://edumaterialcertifcator.net/gradescertifier" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GradesPublication" xmlns:xsd="http://edumaterialcertifcator.net/gradescertifier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ProfessorID" type="xs:unsignedInt" />
+        <xs:element name="Campus" type="xs:string" />
+        <xs:element name="Course" type="xs:string" />
+        <xs:element name="Class" type="xs:string" />
+        <xs:element name="EvaluationType" type="xs:string" />
+        <xs:element name="Evaluations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="StudentEvaluation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="StudentID" type="xs:unsignedInt" />
+                    <xs:element name="Score" type="xs:double" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PublishedGradesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="PublishedGradesModelStoreContainer">
+          <EntitySet Name="Professor" EntityType="PublishedGradesModel.Store.Professor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Publication" EntityType="PublishedGradesModel.Store.Publication" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Student" EntityType="PublishedGradesModel.Store.Student" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StudentScore" EntityType="PublishedGradesModel.Store.StudentScore" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_StudentScores_Publication" Association="PublishedGradesModel.Store.FK_StudentScores_Publication">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="StudentScore" EntitySet="StudentScore" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Professor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProfessorID" Type="int" Nullable="false" />
+          <Property Name="Campus" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Course" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Class" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EvaluationType" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Signature" Type="nvarchar" Nullable="false" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="StudentScore">
+          <Key>
+            <PropertyRef Name="PublicationID" />
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="PublicationID" Type="int" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="Score" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_StudentScores_Publication">
+          <End Role="Publication" Type="PublishedGradesModel.Store.Publication" Multiplicity="1" />
+          <End Role="StudentScore" Type="PublishedGradesModel.Store.StudentScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentScore">
+              <PropertyRef Name="PublicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PublishedGradesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Professor" EntityType="PublishedGradesModel.Professor" />
+          <EntitySet Name="Publication" EntityType="PublishedGradesModel.Publication" />
+          <EntitySet Name="Student" EntityType="PublishedGradesModel.Student" />
+          <EntitySet Name="StudentScore" EntityType="PublishedGradesModel.StudentScore" />
+          <AssociationSet Name="FK_StudentScores_Publication" Association="PublishedGradesModel.FK_StudentScores_Publication">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="StudentScore" EntitySet="StudentScore" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Professor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfessorID" Type="Int32" Nullable="false" />
+          <Property Name="Campus" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Course" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EvaluationType" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Signature" Type="String" Nullable="false" MaxLength="1024" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="StudentScore" Relationship="PublishedGradesModel.FK_StudentScores_Publication" FromRole="Publication" ToRole="StudentScore" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="StudentScore">
+          <Key>
+            <PropertyRef Name="PublicationID" />
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="PublicationID" Type="Int32" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Publication" Relationship="PublishedGradesModel.FK_StudentScores_Publication" FromRole="StudentScore" ToRole="Publication" />
+        </EntityType>
+        <Association Name="FK_StudentScores_Publication">
+          <End Role="Publication" Type="PublishedGradesModel.Publication" Multiplicity="1" />
+          <End Role="StudentScore" Type="PublishedGradesModel.StudentScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StudentScore">
+              <PropertyRef Name="PublicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PublishedGradesModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Professor">
+            <EntityTypeMapping TypeName="PublishedGradesModel.Professor">
+              <MappingFragment StoreEntitySet="Professor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publication">
+            <EntityTypeMapping TypeName="PublishedGradesModel.Publication">
+              <MappingFragment StoreEntitySet="Publication">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProfessorID" ColumnName="ProfessorID" />
+                <ScalarProperty Name="Campus" ColumnName="Campus" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="EvaluationType" ColumnName="EvaluationType" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="PublishedGradesModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentScore">
+            <EntityTypeMapping TypeName="PublishedGradesModel.StudentScore">
+              <MappingFragment StoreEntitySet="StudentScore">
+                <ScalarProperty Name="PublicationID" ColumnName="PublicationID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://sauron:8090/gradescertifier.asmx?wsdl" docRef="http://sauron:8090/gradescertifier.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://sauron:8090/gradescertifier.asmx" xmlns:q1="http://edumaterialcertifcator.net/gradescertifier" binding="q1:GradesCertifierSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://sauron:8090/gradescertifier.asmx" xmlns:q2="http://edumaterialcertifcator.net/gradescertifier" binding="q2:GradesCertifierSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

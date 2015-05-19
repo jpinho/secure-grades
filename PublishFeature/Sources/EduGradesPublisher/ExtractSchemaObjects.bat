@@ -1,0 +1,1 @@
+﻿xsd.exe Schemas\WSG-GradesPublication_1_0_0.xsd /classes /out:Schemas /nologo

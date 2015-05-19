@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EduMaterialCertificator.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CertificateDN" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">E=jpe.pinho@gmail.com, CN=edumaterialcertifier.net, OU=Ciber Security Department, O="WebSecureGrades, Inc.", L=Lisboa, S=Portugal, C=PT</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
